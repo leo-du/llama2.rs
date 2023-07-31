@@ -20,6 +20,34 @@ and then simply
 ./run stories15M.bin
 ```
 
+The original interface is preserved, i.e.
+```bash
+./run stories15M.bin [temperature] [num steps] [user prompt]
+```
+
+For example, the following command runs the model at temperature 0.0 (i.e., greedy decoding) with the prompt "Once upon a time"
+```bash
+./run ../llama2/stories15M.bin 0.0 256 "Once upon a time"
+```
+and produces the following output on my laptop
+```
+Model file: ../llama2/stories15M.bin, temperature: 0, step: 256
+Model Config { dim: 288, hidden_dim: 768, n_layers: 6, n_heads: 6, n_kv_heads: 6, vocab_size: 32000, seq_len: 256 }
+<s>
+Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she saw a big, red ball in the sky. It was the sun! She wanted to touch it, but it was too high up.
+Lily asked her mommy, "Can you help me touch the sun?"
+Her mommy said, "Sure, let's go outside and try to touch it together."
+They went outside and Lily's mommy held her hand and they touched the sun. It was so hot that they felt the heat on their skin.
+Lily said, "It's so hot!"
+Her mommy said, "Yes, it is. But we can still touch it."
+Lily was happy that they could touch the sun and she could still play outside.
+<s>
+ Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she saw a big, red ball in the sky. It was the sun! She thought it was so pretty.
+Lily wanted to play with the ball, but it was too high up in the sky.
+--------------------------------
+elapsed: 4.497 s, avg tok/s: 56.699135
+```
+
 ## llama2.c
 
 With the code in this repo you can train the Llama 2 LLM architecture from scratch in PyTorch, then export the weights to a binary file, and load that into one ~simple 500-line C file ([run.c](run.c)) that inferences the model. Alternatively, you can load, finetune, and inference Meta's Llama 2 (but this is still being actively fleshed out). Hence, this repo is a "fullstack" train + inference solution for Llama 2 LLM, with a focus on minimalism and simplicity. You might think that you need many billion parameter LLMs to do anything useful, but in fact very small LLMs can have surprisingly strong performance if you make the domain narrow enough. I recommend looking at the [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories) paper for inspiration.
