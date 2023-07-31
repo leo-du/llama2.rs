@@ -8,7 +8,7 @@ This repo ports the original llama2.c code into a single Rust file with
 
 * _zero_ dependencies,
 * _zero_ lines of `unsafe` code,
-* supports user prompt (as in C implementation), and
+* supports user prompt (as in the updated C implementation), and
 * almost no performance loss (difference <5%).
 
 To run the Rust file, first download the models following the original instructions (down below).
