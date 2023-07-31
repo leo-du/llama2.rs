@@ -1,3 +1,21 @@
+## llama2.rs
+
+This repo ports the original llama2.c code into a single Rust file with
+
+* _zero_ dependencies,
+* _zero_ lines of `unsafe` code, and
+* almost no performance loss (difference <5%).
+
+To run the Rust file, first download the models following the original instructions (down below).
+If you have Rust installed, you can run
+```bash
+rustc -C opt-level=3 run.rs -o run
+```
+and then simply
+```bash
+./run stories15M.bin
+```
+
 ## llama2.c
 
 <p align="center">

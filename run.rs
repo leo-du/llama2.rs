@@ -447,7 +447,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!();
     println!("--------------------------------");
     println!("elapsed: {}.{:03} s, avg tok/s: {}",
-             elapsed.as_secs(), elapsed.subsec_millis(), steps as f32 / elapsed.as_secs_f32());
+             elapsed.as_secs(), elapsed.subsec_millis(), (steps-1) as f32 / elapsed.as_secs_f32());
 
     Ok(())
 }
