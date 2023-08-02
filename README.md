@@ -7,7 +7,8 @@
 This repo ports the original llama2.c code into a single Rust file with
 
 * _zero_ dependencies,
-* _zero_ lines of `unsafe` code, and
+* _zero_ lines of `unsafe` code,
+* supports user prompt (as in the updated C implementation), and
 * almost no performance loss (difference <5%).
 
 To run the Rust file, first download the models following the original instructions (down below).
@@ -20,7 +21,7 @@ and then simply
 ./run stories15M.bin
 ```
 
-The original interface is preserved, i.e.
+The original command-line interface is preserved:
 ```bash
 ./run stories15M.bin [temperature] [num steps] [user prompt]
 ```
@@ -47,6 +48,12 @@ Lily wanted to play with the ball, but it was too high up in the sky.
 --------------------------------
 elapsed: 4.497 s, avg tok/s: 56.699135
 ```
+
+
+* Rayon support
+  
+  Due to the consideration of zero dependency and the fact that Rust's OpenMP equivalent is in a dependency (Rayon), the program currently supports only single-thread inference. However, Rayon support will be available soon with optional dependency.
+
 
 ## llama2.c
 
