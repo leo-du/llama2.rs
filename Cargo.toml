@@ -1,0 +1,18 @@
+[package]
+name = "llama2"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "run"
+path = "run.rs"
+
+
+[dependencies]
+rayon = { version = "1.7.0", optional = true }
+
+
+[features]
+threads = ["rayon"]
